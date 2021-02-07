@@ -1,0 +1,21 @@
+.head-nav .router-link-exact-active{
+    border-bottom: 2px solid white;
+}
+.posfix{
+	position: fixed;
+}
+.posabs{
+	position: absolute;
+}
+.posb{
+	bottom:15px;
+}
+.posr{
+	right: 15px;
+}
+.posl{
+    left: 15px;
+}
+.post{
+	top: 15px;
+}
