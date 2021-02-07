@@ -3,28 +3,28 @@
     <div class="modal-content">
         <div class="row">
             <div class="input-field col s12">
-                    <input v-model="allPoisk" id="url" type="text" class="validate">
-                    <label for="url" :class="{active: allPoisk.name}">введите любое название поиска</label>
+                    <input @input="setForm()" id="name" type="text" class="validate" :value="allPoisk.name">
+                    <label for="name" :class="{active: allPoisk.name}">введите любое название поиска</label>
             </div>
             <div class="input-field col s12">
-                    <input  id="url" type="text" class="validate" :value="allPoisk.url">
+                    <input @input="setForm()" id="url" type="text" class="validate" :value="allPoisk.url">
                     <label for="url" :class="{active: allPoisk.url}">введите URL адрес</label>
             </div>
             <div class="input-field col s12">
                 Время начала:
                 <div class="input-field inline">
-                    <input type="time" id="timeStart" name="timeStart" :value="allPoisk.timeStart"/>
+                    <input @input="setForm()" type="time" id="timeStart" name="timeStart" :value="allPoisk.timeStart"/>
                 </div>
             </div>
             <div class="input-field col s12">
                 Время окончания:
                 <div class="input-field inline">
-                    <input type="time" id="timeEnd" name="timeEnd" :value="allPoisk.timeEnd"/>
+                    <input @input="setForm()" type="time" id="timeEnd" name="timeEnd" :value="allPoisk.timeEnd"/>
                 </div>
             </div>
             <div class="input-field col s12">
 
-                <select style="display:block" v-model="allPoisk.interval">
+                <select @input="setForm()" id="interval" style="display:block" v-model="allPoisk.interval">
                     <option value="" disabled selected>Выберите интервал</option>
                     <option value="1">1мин</option>
                     <option value="2">2мин</option>
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="modal-footer">
-      <button href="#!" class="modal-close waves-effect waves-green btn-flat">Сохранить</button>
+      <button @click="setAllForm" href="#!" class="modal-close waves-effect waves-green btn-flat">Сохранить</button>
     </div>
 </div>
 </template>
@@ -56,14 +56,18 @@ export default {
         return this.$store.state.modal
       },
       set (value) {
-        console.log(event, value)
+        // console.log(event.target.id, value)
         // this.$store.commit('editDraftModal', input, val)
       }
     }
   },
   methods: {
-    saveDraft (input, val) {
-      this.$store.commit('editDraftModal', input, val)
+    setForm () {
+      // console.log(event.target.value, event.target.id)
+      this.$store.commit('editIdPoisk', { [event.target.id]: event.target.value })
+    },
+    setAllForm () {
+      this.$store.dispatch('dbSetLogistic')
     }
   }
 }

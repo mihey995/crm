@@ -33,7 +33,7 @@
     <li><a href="collapsible.html">JavaScript</a></li>
   </ul>
   <div class="posb posr posfix">
-    <a v-on:click="editId" href="#modal-add" class="waves-effect waves-light btn red modal-trigger" style="margin-right:15px"><i class="material-icons right">edit</i>Изменить</a>
+    <a v-if="this.$store.state.draftBtn" href="#modal-add" class="waves-effect waves-light btn red modal-trigger" style="margin-right:15px"><i class="material-icons right">edit</i>Черновик</a>
     <a v-on:click="setId" href="#modal-add" class="waves-effect waves-light btn red modal-trigger"><i class="material-icons right">add</i>Новый</a>
   </div>
 </div>

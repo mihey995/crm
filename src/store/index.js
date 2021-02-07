@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     modal: '',
+    draftBtn: '' // hide
   },
   getters: {
   },
@@ -20,12 +21,22 @@ export default new Vuex.Store({
         timeEnd: '21:00',
         interval: 10 // in minutes
       }
+      this.commit('showDraftBtn', 'show')
     },
     editIdPoisk (state, payLoad) {
       state.modal = Object.assign(state.modal, payLoad)
+      this.commit('showDraftBtn', 'show')
+    },
+    showDraftBtn (state, show) {
+      state.draftBtn = show
     }
   },
   actions: {
+    dbSetLogistic () {
+      // скрываем кнопку черновик
+      this.commit('showDraftBtn', '')
+      // отправлояем в базу новую заявку
+    }
   },
   modules: {
   }
