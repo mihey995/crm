@@ -2,7 +2,7 @@
 <div>
    <nav class="nav-extended head-nav">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Мои поиски</a>
+      <a href="#" class="brand-logo">CRM 1.0</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
@@ -49,8 +49,8 @@ export default {
   },
   data: () => ({
     links: [
-      { to: '/', name: 'Avito' },
-      { to: '/youla', name: 'Youla' }
+      { to: '/', name: 'Курьеры' },
+      { to: '/youla', name: '2 страница' }
     ]
   }),
   computed: {
@@ -59,13 +59,8 @@ export default {
     }
   },
   methods: {
-    activeTabs: function () {
-      console.log(111111)
-    },
     setId () {
       this.$store.commit('DEFAULT_MUTATION_MODAL')
-    },
-    editId () {
     }
   },
   mounted: function () {

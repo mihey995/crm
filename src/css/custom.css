@@ -1,5 +1,11 @@
-.head-nav .router-link-exact-active{
+.head-nav .router-link-active{
     border-bottom: 2px solid white;
+}
+.home .curiers .router-link-exact-active
+{
+	outline: none;
+    background-color: #26a69a;
+    color: #fff;
 }
 .posfix{
 	position: fixed;

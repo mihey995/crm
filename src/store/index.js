@@ -7,7 +7,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     modal: '',
-    draftBtn: '' // hide
+    draftBtn: '', // hide
+    leads: {
+      id: 1,
+      name: ''
+    }
   },
   getters: {
   },
