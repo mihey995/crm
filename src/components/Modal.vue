@@ -4,11 +4,29 @@
         <div class="row">
             <div class="input-field col s12">
                     <input @input="setForm()" id="name" type="text" class="validate" :value="allPoisk.name">
-                    <label for="name" :class="{active: allPoisk.name}">введите любое название поиска</label>
+                    <label for="name" :class="{active: allPoisk.name}">Партнёр</label>
             </div>
             <div class="input-field col s12">
-                    <input @input="setForm()" id="url" type="text" class="validate" :value="allPoisk.url">
-                    <label for="url" :class="{active: allPoisk.url}">введите URL адрес</label>
+                    <input @input="setForm()" id="address" type="text" class="validate" :value="allPoisk.address">
+                    <label for="address" :class="{active: allPoisk.address}">Адрес</label>
+            </div>
+            <div class="input-field col s12">
+                <select @input="setForm()" id="action" v-model="allPoisk.action">
+                    <option value="" disabled selected>Забрать/отдать</option>
+                    <option value="о">Отдать</option>
+                    <option value="з">Забрать</option>
+                    <option value="о/з">Отдать/забрать</option>
+                    <option value="к">Купить</option>
+                    <option value="др">Другое</option>
+                </select>
+            </div>
+            <div class="input-field col s12">
+                    <input @input="setForm()" id="podmenka" type="text" class="validate" :value="allPoisk.podmenka">
+                    <label for="podmenka" :class="{active: allPoisk.podmenka}">Подменка</label>
+            </div>
+            <div class="input-field col s12">
+                    <input @input="setForm()" id="comment" type="text" class="validate" :value="allPoisk.comment">
+                    <label for="comment" :class="{active: allPoisk.comment}">Комментарий</label>
             </div>
             <div class="input-field col s12">
                 Время начала:
@@ -22,20 +40,6 @@
                     <input @input="setForm()" type="time" id="timeEnd" name="timeEnd" :value="allPoisk.timeEnd"/>
                 </div>
             </div>
-            <div class="input-field col s12">
-
-                <select @input="setForm()" id="interval" style="display:block" v-model="allPoisk.interval">
-                    <option value="" disabled selected>Выберите интервал</option>
-                    <option value="1">1мин</option>
-                    <option value="2">2мин</option>
-                    <option value="5">5мин</option>
-                    <option value="10">10мин</option>
-                    <option value="20">20мин</option>
-                    <option value="30">30мин</option>
-                    <option value="45">45мин</option>
-                    <option value="60">60мин</option>
-                </select>
-            </div>
         </div>
     </div>
     <div class="modal-footer">
@@ -47,7 +51,7 @@
 export default {
   data () {
     return {
-      url: ''
+      name: ''
     }
   },
   computed: {
@@ -68,6 +72,7 @@ export default {
     },
     setAllForm () {
       this.$store.dispatch('dbSetLogistic')
+      // this.$toast('работает')
     }
   }
 }

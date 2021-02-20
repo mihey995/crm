@@ -14,27 +14,51 @@
     </div>
     <div class="row">
         <div class="col s12">
-          <ul class="collection waves-color-demo">
-            <li class="collection-item" style="line-height:2.6rem">
-              <Poisk/>
-            </li>
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>Клиент</th>
+                <th>Адрес</th>
+                <th title="Временный картридж (подменка)">Подм</th>
+                <th title="Забрать или отдать">З/о</th>
+                <th style="min-width:88px"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <Poisk
+                v-for="item in allPoisk"
+                :key="item.index"
+                :data="item"
+              />
+            </tbody>
+          </table>
         </div>
       </div>
+      <Preloader :show="this.state.preloader"/>
   </div>
 </template>
 <script>
 import Poisk from '../components/Poisk.vue'
+import Preloader from '../components/Preloader.vue'
 export default {
   components: {
-    Poisk
+    Poisk, Preloader
   },
   computed: {
     currentPage () {
       return this.$route.path
+    },
+    allPoisk () {
+      return this.$store.state.leads
     }
   },
+  mounted: function () {
+    this.$store.dispatch('dbGetLogistic', this)
+  },
   data: () => ({
+    state: {
+      preloader: false
+    },
     links: [
       { to: '/', name: 'Все' },
       { to: '?curier=1', name: 'Влад' },
